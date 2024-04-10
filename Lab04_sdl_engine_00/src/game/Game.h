@@ -7,6 +7,9 @@
 #include <SDL_ttf.h>
 #include <string>
 
+const int FPS = 60;
+const int MILLISECS_PER_FRAME = 1000 / FPS; //16.6
+
 class Game {
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
@@ -19,10 +22,12 @@ class Game {
 	SDL_Color fontColor= { 0, 0, 0 };
 
 	bool isRunning = false;
+	int mPrvsFrame = 0; //miliseconds previous frame
 
 	// Atributos de la imagen
 	SDL_Texture* imgTexture = nullptr;
 	glm::vec2 pos = glm::vec2();
+	glm::vec2 imgVel = glm::vec2();
 	size_t imgWidth = 0;
 	size_t imgHeight = 0;
 	SDL_Rect srcRect = { 0, 0, 0, 0 };
